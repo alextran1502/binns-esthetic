@@ -15,6 +15,8 @@
 				Binns Esthetic
 			</h1>
 			<p class="mt-3 text-lg text-[#7A4333]">Bellevue, Nebraska</p>
+			<p class="mt-3 text-lg text-[#7A4333]">Phone: 402-889-6149</p>
+			<p class="mt-3 text-lg text-[#7A4333]">Email: phungpat@gmail.com</p>
 		</div>
 	</div>
 </section>
@@ -64,6 +66,7 @@
 	<p class="mt-3 text-[#7A4333]">
 		Receive admissions updates, information session invites, and early enrollment announcements.
 	</p>
+
 	{#if data.tallyForms.waitlist.configured}
 		<div
 			class="mt-5 overflow-hidden rounded-2xl border border-[#521C0D]/20 bg-[#F4E7E1]/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm"
@@ -92,6 +95,7 @@
 	<div id="appointment" class="mt-5">
 		{#if data.tallyForms.appointment.configured}
 			<h3 class="font-['Faustina'] text-3xl leading-tight">Appointment Request Form</h3>
+
 			<div
 				class="mt-3 overflow-hidden rounded-2xl border border-[#521C0D]/20 bg-[#F4E7E1]/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm"
 			>
@@ -117,19 +121,5 @@
 		{/if}
 	</div>
 
-	<div class="mt-5 flex flex-wrap gap-3">
-		<a
-			class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
-			href="#waitlist"
-		>
-			Open Waitlist Form
-		</a>
-		<a
-			class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
-			href="#appointment"
-		>
-			Open Appointment Form
-		</a>
-	</div>
 	<p class="mt-4 text-[#7A4333]">Follow us on social media for updates.</p>
 </section>

@@ -81,6 +81,34 @@
 		</div>
 	</header>
 
+	<aside class="pointer-events-none fixed right-5 bottom-10 z-40 hidden xl:block">
+		<div
+			class="pointer-events-auto w-64 rounded-2xl border border-[#521C0D]/20 bg-[#FCF3EE]/95 p-4 shadow-[0_16px_32px_rgba(82,28,13,0.2)] backdrop-blur-sm"
+		>
+			<p class="text-xs font-semibold tracking-[0.12em] text-[#D5451B]">Contact Binns Esthetic</p>
+			<p class="mt-2 text-sm text-[#7A4333]">Questions about enrollment or appointments?</p>
+			<div class="mt-4 grid gap-2">
+				<a
+					href="tel:+14028896149"
+					class="rounded-xl border border-[#521C0D]/15 bg-white/65 px-3 py-2 text-sm font-semibold text-[#521C0D] transition hover:bg-white"
+				>
+					402-889-6149
+				</a>
+				<p
+					class="rounded-xl border border-[#521C0D]/15 bg-white/65 px-3 py-2 text-sm font-semibold text-[#521C0D] select-all"
+				>
+					phungpat@gmail.com
+				</p>
+			</div>
+			<a
+				href={resolve('/contact')}
+				class="mt-4 inline-flex items-center rounded-full bg-[#D5451B] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#B63615]"
+			>
+				Open Contact Page
+			</a>
+		</div>
+	</aside>
+
 	<main class="pb-12">{@render children()}</main>
 
 	<footer
@@ -114,6 +142,14 @@
 				<h3 class="text-base font-semibold">Get Started</h3>
 				<p class="mt-2 text-[#FFECDD]">Bellevue, Nebraska</p>
 				<p class="mt-2 text-[#FFECDD]">Use the contact and booking forms to reach our team.</p>
+				<p class="mt-2 text-[#FFECDD]">
+					Phone:
+					<a href="tel:+14028896149" class="transition hover:text-white">402-889-6149</a>
+				</p>
+				<p class="mt-1 text-[#FFECDD]">
+					Email:
+					<span class="select-all">phungpat@gmail.com</span>
+				</p>
 				<div class="mt-4 flex flex-wrap gap-3">
 					<button
 						type="button"
