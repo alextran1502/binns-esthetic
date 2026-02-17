@@ -69,11 +69,12 @@
 		>
 			Contact Binns Esthetic
 		</a>
-		<a
-			href={resolve('/contact')}
+		<button
+			type="button"
+			onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
 			class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
 		>
 			Join Waitlist
-		</a>
+		</button>
 	</div>
 </section>

@@ -68,3 +68,12 @@ Then fill:
 pnpm build
 npx wrangler deploy
 ```
+
+## GitHub Auto Deploy (main branch)
+
+This repo includes `.github/workflows/deploy-worker.yml` to deploy automatically on every push to `main`.
+
+Set these GitHub repository secrets before using the workflow:
+
+- `CLOUDFLARE_API_TOKEN` (with Workers deploy permissions)
+- `CLOUDFLARE_ACCOUNT_ID`

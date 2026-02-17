@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
-
 	let { data } = $props();
 </script>
 
@@ -28,9 +26,7 @@
 		<article>
 			<h2 class="font-['Faustina'] text-4xl leading-tight md:text-5xl">Get in touch</h2>
 			<p class="mt-3 text-[#7A4333]">
-				Phone: [Your Number]
-				<br />
-				Email: [Your Email]
+				Use the waitlist and appointment forms below to contact the Binns Esthetic team.
 			</p>
 			<div class="mt-5 flex flex-wrap gap-3">
 				<a
@@ -40,7 +36,7 @@
 					Join Waitlist
 				</a>
 				<a
-					href={resolve('/binns-ink-salon')}
+					href="#appointment"
 					class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
 				>
 					Book Appointment
@@ -69,18 +65,21 @@
 		Receive admissions updates, information session invites, and early enrollment announcements.
 	</p>
 	{#if data.tallyForms.waitlist.configured}
-		<div class="mt-5 overflow-hidden rounded-2xl border border-[#521C0D]/15 bg-white/90">
+		<div
+			class="mt-5 overflow-hidden rounded-2xl border border-[#521C0D]/20 bg-[#F4E7E1]/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm"
+		>
 			<iframe
 				title="Binns Esthetic waitlist form"
 				data-tally-src={data.tallyForms.waitlist.embedUrl}
 				src={data.tallyForms.waitlist.embedUrl}
 				loading="lazy"
 				width="100%"
-				height="380"
+				height="400"
+				scrolling="no"
 				frameborder="0"
 				marginheight="0"
 				marginwidth="0"
-				class="block w-full border-0"
+				class="block w-full border-0 bg-transparent"
 			></iframe>
 		</div>
 	{:else}
@@ -90,60 +89,47 @@
 		</div>
 	{/if}
 
-	{#if data.tallyForms.appointment.configured && data.tallyForms.appointment.formId !== data.tallyForms.waitlist.formId}
-		<div class="mt-5">
+	<div id="appointment" class="mt-5">
+		{#if data.tallyForms.appointment.configured}
 			<h3 class="font-['Faustina'] text-3xl leading-tight">Appointment Request Form</h3>
-			<div class="mt-3 overflow-hidden rounded-2xl border border-[#521C0D]/15 bg-white/90">
+			<div
+				class="mt-3 overflow-hidden rounded-2xl border border-[#521C0D]/20 bg-[#F4E7E1]/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm"
+			>
 				<iframe
 					title="Binns Esthetic appointment form"
 					data-tally-src={data.tallyForms.appointment.embedUrl}
 					src={data.tallyForms.appointment.embedUrl}
 					loading="lazy"
 					width="100%"
-					height="380"
+					height="400"
+					scrolling="no"
 					frameborder="0"
 					marginheight="0"
 					marginwidth="0"
-					class="block w-full border-0"
+					class="block w-full border-0 bg-transparent"
 				></iframe>
 			</div>
-		</div>
-	{/if}
+		{:else}
+			<p class="rounded-xl border border-[#521C0D]/20 bg-white/70 px-4 py-3 text-sm text-[#7A4333]">
+				Appointment form is not configured yet. Add `PUBLIC_TALLY_APPOINTMENT_FORM` in `.env` or
+				Cloudflare Worker variables.
+			</p>
+		{/if}
+	</div>
 
 	<div class="mt-5 flex flex-wrap gap-3">
-		{#if data.tallyForms.waitlist.configured}
-			<button
-				type="button"
-				onclick={() => window.location.assign(data.tallyForms.waitlist.responseUrl)}
-				class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
-			>
-				Open Waitlist Form
-			</button>
-		{:else}
-			<a
-				class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
-				href="mailto:[Your Email]?subject=Binns%20Esthetic%20Waitlist%20Request"
-			>
-				Join Waitlist
-			</a>
-		{/if}
-
-		{#if data.tallyForms.appointment.configured}
-			<button
-				type="button"
-				onclick={() => window.location.assign(data.tallyForms.appointment.responseUrl)}
-				class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
-			>
-				Open Appointment Form
-			</button>
-		{:else}
-			<a
-				class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
-				href="mailto:[Your Email]?subject=Binns%20Esthetic%20Appointment%20Request"
-			>
-				Book Appointment
-			</a>
-		{/if}
+		<a
+			class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
+			href="#waitlist"
+		>
+			Open Waitlist Form
+		</a>
+		<a
+			class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
+			href="#appointment"
+		>
+			Open Appointment Form
+		</a>
 	</div>
 	<p class="mt-4 text-[#7A4333]">Follow us on social media for updates.</p>
 </section>

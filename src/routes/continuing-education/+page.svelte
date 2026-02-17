@@ -19,12 +19,13 @@
 				and expand professional knowledge.
 			</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href="#ce-interest"
+				<button
+					type="button"
+					onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
 					class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 				>
 					Join CE Interest List
-				</a>
+				</button>
 				<a
 					href={resolve('/contact')}
 					class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
@@ -108,11 +109,12 @@
 		Get notices on workshop launches, schedules, and registration openings.
 	</p>
 	<div class="mt-5">
-		<a
-			href={resolve('/contact')}
+		<button
+			type="button"
+			onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
 			class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 		>
 			Join CE Interest List
-		</a>
+		</button>
 	</div>
 </section>

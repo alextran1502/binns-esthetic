@@ -19,18 +19,20 @@
 				Professional Esthetic Training &amp; Advanced Skin Services in Bellevue
 			</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href={resolve('/esthetic-school')}
+				<button
+					type="button"
+					onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
 					class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 				>
 					Join the Student Waitlist
-				</a>
-				<a
-					href={resolve('/binns-ink-salon')}
+				</button>
+				<button
+					type="button"
+					onclick={() => window.location.assign(`${resolve('/contact')}#appointment`)}
 					class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
 				>
 					Book a Facial
-				</a>
+				</button>
 				<a
 					href={resolve('/esthetic-school')}
 					class="inline-flex items-center rounded-full border border-[#D5451B]/35 bg-white/55 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white/80"
@@ -199,11 +201,12 @@
 		announcements.
 	</p>
 	<div class="mt-5">
-		<a
-			href={resolve('/contact')}
+		<button
+			type="button"
+			onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
 			class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 		>
 			Join the Waitlist
-		</a>
+		</button>
 	</div>
 </section>

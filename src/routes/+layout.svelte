@@ -4,11 +4,10 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 
-	let { children, data } = $props();
+	let { children } = $props();
 	let menuOpen = $state(false);
 
 	const navLinks = [
-		{ href: '/', label: 'Home' },
 		{ href: '/esthetic-school', label: 'Esthetic School' },
 		{ href: '/binns-ink-salon', label: 'Binns Ink Salon' },
 		{ href: '/continuing-education', label: 'Continuing Education' },
@@ -18,7 +17,7 @@
 		{ href: '/contact', label: 'Contact' }
 	] as const;
 
-	const quickLinks = navLinks.slice(1, 5);
+	const quickLinks = navLinks.slice(0, 4);
 
 	function closeMenu() {
 		menuOpen = false;
@@ -38,39 +37,47 @@
 <div class="min-h-screen bg-[#F4E7E1] font-['Manrope'] text-[#521C0D]">
 	<header class="sticky top-0 z-50 border-b border-[#521C0D]/15 bg-[#F4E7E1]/90 backdrop-blur">
 		<div
-			class="mx-auto flex w-[min(1120px,calc(100%-1.4rem))] items-center justify-between gap-4 py-3 md:w-[min(1120px,calc(100%-2.5rem))]"
+			class="relative mx-auto w-[min(1120px,calc(100%-1.4rem))] py-3 md:w-[min(1120px,calc(100%-2.5rem))] md:py-4"
 		>
-			<a href={resolve('/')} class="flex flex-col gap-0.5 leading-none" onclick={closeMenu}>
-				<span class="font-['Faustina'] text-[2rem] font-bold text-[#D5451B]">Binns Esthetic</span>
-				<span class="text-[0.72rem] tracking-[0.16em] text-[#7A4333]"
-					>Esthetic School + Ink Salon</span
-				>
-			</a>
-
-			<button
-				type="button"
-				class="inline-flex rounded-full border border-[#521C0D]/20 bg-[#FCF3EE] px-4 py-2 text-sm font-semibold md:hidden"
-				aria-expanded={menuOpen}
-				aria-controls="site-nav"
-				onclick={() => (menuOpen = !menuOpen)}
+			<div
+				class="flex items-start justify-between gap-3 md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-10"
 			>
-				Menu
-			</button>
-
-			<nav
-				id="site-nav"
-				class={`${menuOpen ? 'grid' : 'hidden'} absolute top-full right-3 left-3 mt-2 gap-1 rounded-xl border border-[#521C0D]/15 bg-[#FCF3EE] p-2 shadow-[0_20px_40px_rgba(82,28,13,0.15)] md:static md:mt-0 md:flex md:w-auto md:flex-wrap md:items-center md:justify-end md:gap-1 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
-			>
-				{#each navLinks as link (link.href)}
-					<a
-						href={resolve(link.href)}
-						onclick={closeMenu}
-						class={`rounded-full px-4 py-2 text-sm font-semibold transition ${$page.url.pathname === link.href ? 'bg-[#F4B8A8] text-[#D5451B]' : 'text-[#7A4333] hover:bg-[#FFD6B6] hover:text-[#521C0D]'}`}
-					>
-						{link.label}
+				<div class="flex items-start gap-2">
+					<a href={resolve('/')} class="flex flex-col gap-0.5 leading-none" onclick={closeMenu}>
+						<span class="font-['Faustina'] text-[2rem] font-bold text-[#D5451B]"
+							>Binns Esthetic</span
+						>
+						<span class="text-[0.72rem] tracking-[0.16em] text-[#7A4333]"
+							>Esthetic School + Ink Salon</span
+						>
 					</a>
-				{/each}
-			</nav>
+
+					<button
+						type="button"
+						class="inline-flex rounded-full border border-[#521C0D]/20 bg-[#FCF3EE] px-4 py-2 text-sm font-semibold md:hidden"
+						aria-expanded={menuOpen}
+						aria-controls="site-nav"
+						onclick={() => (menuOpen = !menuOpen)}
+					>
+						Menu
+					</button>
+				</div>
+
+				<nav
+					id="site-nav"
+					class={`${menuOpen ? 'grid' : 'hidden'} absolute top-full right-0 left-0 mt-2 gap-1 rounded-xl border border-[#521C0D]/15 bg-[#FCF3EE] p-2 shadow-[0_20px_40px_rgba(82,28,13,0.15)] md:static md:col-start-2 md:mt-0 md:flex md:flex-wrap md:items-center md:justify-center md:gap-1 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
+				>
+					{#each navLinks as link (link.href)}
+						<a
+							href={resolve(link.href)}
+							onclick={closeMenu}
+							class={`rounded-full px-4 py-2 text-sm font-semibold transition ${$page.url.pathname === link.href ? 'bg-[#F4B8A8] text-[#D5451B]' : 'text-[#7A4333] hover:bg-[#FFD6B6] hover:text-[#521C0D]'}`}
+						>
+							{link.label}
+						</a>
+					{/each}
+				</nav>
+			</div>
 		</div>
 	</header>
 
@@ -106,45 +113,22 @@
 			<section>
 				<h3 class="text-base font-semibold">Get Started</h3>
 				<p class="mt-2 text-[#FFECDD]">Bellevue, Nebraska</p>
-				<p class="mt-2 text-[#FFECDD]">
-					Phone: [Your Number]
-					<br />
-					Email: [Your Email]
-				</p>
+				<p class="mt-2 text-[#FFECDD]">Use the contact and booking forms to reach our team.</p>
 				<div class="mt-4 flex flex-wrap gap-3">
-					{#if data.tallyForms.waitlist.configured}
-						<button
-							type="button"
-							onclick={() => window.location.assign(data.tallyForms.waitlist.responseUrl)}
-							class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
-						>
-							Join Waitlist
-						</button>
-					{:else}
-						<a
-							href={resolve('/contact')}
-							class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
-						>
-							Join Waitlist
-						</a>
-					{/if}
-
-					{#if data.tallyForms.appointment.configured}
-						<button
-							type="button"
-							onclick={() => window.location.assign(data.tallyForms.appointment.responseUrl)}
-							class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
-						>
-							Book Appointment
-						</button>
-					{:else}
-						<a
-							href={resolve('/binns-ink-salon')}
-							class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
-						>
-							Book Appointment
-						</a>
-					{/if}
+					<button
+						type="button"
+						onclick={() => window.location.assign(`${resolve('/contact')}#waitlist`)}
+						class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
+					>
+						Join Waitlist
+					</button>
+					<button
+						type="button"
+						onclick={() => window.location.assign(`${resolve('/contact')}#appointment`)}
+						class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
+					>
+						Book Appointment
+					</button>
 				</div>
 			</section>
 		</div>

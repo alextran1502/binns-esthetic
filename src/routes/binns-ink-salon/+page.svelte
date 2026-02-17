@@ -19,12 +19,13 @@
 				environment.
 			</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href="#book"
+				<button
+					type="button"
+					onclick={() => window.location.assign(`${resolve('/contact')}#appointment`)}
 					class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 				>
 					Book Appointment
-				</a>
+				</button>
 				<a
 					href={resolve('/contact')}
 					class="inline-flex items-center rounded-full border border-[#D5451B]/50 bg-white/90 px-5 py-3 text-sm font-bold text-[#D5451B] transition hover:bg-white"
@@ -154,11 +155,12 @@
 		Appointments are available now for clients in Bellevue and surrounding areas.
 	</p>
 	<div class="mt-5">
-		<a
-			href={resolve('/contact')}
+		<button
+			type="button"
+			onclick={() => window.location.assign(`${resolve('/contact')}#appointment`)}
 			class="inline-flex items-center rounded-full bg-[#D5451B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#B63615]"
 		>
 			Book Appointment
-		</a>
+		</button>
 	</div>
 </section>
