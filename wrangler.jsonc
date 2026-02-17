@@ -8,6 +8,10 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
-	"workers_dev": true,
+	"routes": [
+		{ "pattern": "binnsesthetic.com", "custom_domain": true },
+		{ "pattern": "www.binnsesthetic.com", "custom_domain": true }
+	],
+	"workers_dev": false,
 	"preview_urls": true
 }
