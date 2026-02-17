@@ -4,7 +4,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 
-	let { children } = $props();
+	let { children, data } = $props();
 	let menuOpen = $state(false);
 
 	const navLinks = [
@@ -27,6 +27,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<script async src="https://tally.so/widgets/embed.js"></script>
 	<title>Binns Esthetic | Bellevue, Nebraska</title>
 	<meta
 		name="description"
@@ -111,18 +112,39 @@
 					Email: [Your Email]
 				</p>
 				<div class="mt-4 flex flex-wrap gap-3">
-					<a
-						href={resolve('/contact')}
-						class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
-					>
-						Join Waitlist
-					</a>
-					<a
-						href={resolve('/binns-ink-salon')}
-						class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
-					>
-						Book Appointment
-					</a>
+					{#if data.tallyForms.waitlist.configured}
+						<button
+							type="button"
+							onclick={() => window.location.assign(data.tallyForms.waitlist.responseUrl)}
+							class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
+						>
+							Join Waitlist
+						</button>
+					{:else}
+						<a
+							href={resolve('/contact')}
+							class="inline-flex items-center rounded-full bg-[#FF9B45] px-4 py-2 text-sm font-bold text-[#521C0D] transition hover:brightness-95"
+						>
+							Join Waitlist
+						</a>
+					{/if}
+
+					{#if data.tallyForms.appointment.configured}
+						<button
+							type="button"
+							onclick={() => window.location.assign(data.tallyForms.appointment.responseUrl)}
+							class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
+						>
+							Book Appointment
+						</button>
+					{:else}
+						<a
+							href={resolve('/binns-ink-salon')}
+							class="inline-flex items-center rounded-full border border-[#FF9B45]/70 px-4 py-2 text-sm font-bold text-[#FFF4EA] transition hover:bg-white/10"
+						>
+							Book Appointment
+						</a>
+					{/if}
 				</div>
 			</section>
 		</div>

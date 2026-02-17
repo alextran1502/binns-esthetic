@@ -12,6 +12,10 @@
 		{ "pattern": "binnsesthetic.com", "custom_domain": true },
 		{ "pattern": "www.binnsesthetic.com", "custom_domain": true }
 	],
+	"vars": {
+		"PUBLIC_TALLY_WAITLIST_FORM": "q4dL8Y",
+		"PUBLIC_TALLY_APPOINTMENT_FORM": "rj654M"
+	},
 	"workers_dev": false,
 	"preview_urls": true
 }

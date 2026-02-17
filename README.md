@@ -40,3 +40,31 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Tally + Google Sheets
+
+This project supports Tally forms on the Contact page.
+
+1. Create your form(s) in Tally:
+   - Waitlist form
+   - Appointment form (optional)
+2. In Tally, open each form and connect Google Sheets:
+   - `Integrations` -> `Google Sheets` -> `Connect` -> choose/create spreadsheet
+3. Copy the Tally form ID or full form URL.
+4. Set env vars:
+
+```sh
+cp .env.example .env
+```
+
+Then fill:
+
+- `PUBLIC_TALLY_WAITLIST_FORM`
+- `PUBLIC_TALLY_APPOINTMENT_FORM` (optional; falls back to waitlist form)
+
+5. Run/deploy:
+
+```sh
+pnpm build
+npx wrangler deploy
+```
